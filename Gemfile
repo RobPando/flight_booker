@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', "~> 3.1.0"
+  gem 'rspec-rails', "~> 3.5"
   gem 'factory_girl_rails', "~> 4.4.1"
   gem 'byebug', platform: :mri
 end

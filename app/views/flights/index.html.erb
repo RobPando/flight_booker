@@ -1,0 +1,32 @@
+
+<h1>Search for Flights</h1>
+
+<%= form_tag('/flights', method: 'get') do %>
+  <%= label_tag "From:" %>
+  <%= select_tag "from", options_for_select(@airports)  %>
+  <%= label_tag "To:" %>
+  <%= select_tag "to", options_for_select(@airports)  %></br>
+
+  <%= label_tag "Passangers:" %>
+   <%= select_tag "num", options_for_select([1, 2, 3, 4])  %></br>
+
+  <%= label_tag "Month:" %>
+  <%= select_month(1) %>
+  <%= label_tag "Year:" %>
+  <%= select_year(Date.today, :start_year => Date.today.year, :end_year => 8.years.from_now.year) %></br>
+
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @flights.any? %>
+<table>
+  <% @flights.each do |flight| %>
+  <tr>
+    <td>From: <%= flight.from.code %></td>
+    <td>To: <%= flight.to.code %></td>
+    <td>Date: <%= flight.date %></td>
+    <td>Flight Duration: <%= flight.duration %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
