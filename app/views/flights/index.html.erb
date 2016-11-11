@@ -22,6 +22,7 @@
 <table>
   <% @flights.each do |flight| %>
   <tr>
+    <td><%= radio_button_tag(:flight, flight.id) %>
     <td>From: <%= flight.from.code %></td>
     <td>To: <%= flight.to.code %></td>
     <td>Date: <%= flight.date %></td>
