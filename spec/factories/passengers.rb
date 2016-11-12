@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :passenger do
-    name "MyString"
-    email "MyString"
+    name "Rob"
+    email "rob@example.com"
   end
 end

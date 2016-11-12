@@ -2,7 +2,10 @@
 
 FactoryGirl.define do
   factory :booking do
-    passenger nil
-    flight nil
+    
+    after(:build) do |booking|
+      booking.flight = create(:flight)
+      booking.passenger = create(:passenger)
+    end
   end
 end
