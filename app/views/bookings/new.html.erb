@@ -1,0 +1,20 @@
+<h1>Booking Information</h1>
+<p>Flight from:</p>
+<%= @flight.from.code %>
+<p>Flight to:</p>
+<%= @flight.to.code %>
+<p>Number of Passengers: <%= @passenger_num %></p>
+
+<h2>Passenger Information:</h2>
+<%= form_tag '/bookings' do %>
+  <%= hidden_field_tag :flight, @flight.id %>
+
+  <% @passenger_num.times do %>  
+    <%= label_tag "Name:" %>
+    <%= text_field_tag 'passengers[][name]' %>
+
+    <%= label_tag "Email" %>
+    <%= text_field_tag 'passengers[][email]' %></br>
+  <% end %>
+  <%= submit_tag "Submit Booking" %>
+<% end %>

@@ -21,11 +21,4 @@ RSpec.describe FlightsController do
       end
     end
   end
-
-  describe "New #new" do
-  end
-
-  describe "Create #create" do
-  end
-
 end

@@ -1,0 +1,21 @@
+<h1>Bookings</h1>
+<table>
+    <tr>
+      <th>ID</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th>Duration</th>
+    </tr>
+<% if @bookings.any? %>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.id %></td>
+      <td><%= booking.flight.from.code %></td>
+      <td><%= booking.flight.to.code %></td>
+      <td><%= booking.flight.date.strftime("%d-%m-%Y") %></td>
+      <td><%= Time.at(booking.flight.duration).strftime("%H:%M:%S") %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>

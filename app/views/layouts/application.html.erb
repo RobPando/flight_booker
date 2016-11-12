@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+        <div><%= message %></div>
+      <% end %>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Bookings", bookings_path %></li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
