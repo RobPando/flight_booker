@@ -17,11 +17,11 @@
     <div class="row">
       <div class="col s6">
         <%= label_tag "Passengers:" %>
-        <%= select_tag :num, options_for_select([1, 2, 3, 4])  %></br> 
+        <%= select_tag :num, options_for_select([1, 2, 3, 4]), class: "browser-default"  %></br> 
       </div>
       <div class="col s6">
         <%= label_tag "Date:" %>
-        <%= select_tag "date", options_for_select(@available_dates) %>  
+        <%= select_tag "date", options_for_select(@available_dates), class: "browser-default" %>  
       </div>
     </div>
     <div class="btn waves-effect waves-light blue center">

@@ -1,0 +1,7 @@
+<div class="fixed-action-btn">
+  <% if controller.controller_name == 'flights' %>
+    <%= link_to content_tag(:i, 'library_books', class: 'large material-icons'), bookings_path, class: "btn-floating btn-large red" %>
+  <% else %>
+    <%= link_to content_tag(:i, 'search', class: 'large material-icons'), root_url, class: "btn-floating btn-large red" %>
+  <% end %>
+</div>
