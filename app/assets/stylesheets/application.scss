@@ -1,0 +1,19 @@
+@import "materialize/components/color";
+@import 'materialize';
+
+
+.blue-gradient {
+  background: #81d4fa;
+  background: -webkit-linear-gradient(bottom, #81d4fa 0%, #e1f5fe 50%, #ffffff 100%);
+  background: linear-gradient(to top, #81d4fa 0%, #e1f5fe 50%, #ffffff 100%);
+}
+
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

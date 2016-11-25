@@ -3,21 +3,19 @@
   <head>
     <title>FlightBooker</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
-  <body>
-    <% flash.each do |message_type, message| %>
+  <body class="blue-gradient">
+    <%= render 'layouts/nav' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
         <div><%= message %></div>
       <% end %>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Bookings", bookings_path %></li>
-      </ul>
-    </nav>
-    <%= yield %>
+      <%= yield %>
+    </div>
+    <%= render '/layouts/footer' %>
   </body>
 </html>
