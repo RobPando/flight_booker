@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col s12 m5">
+    <div class="card-panel blue">
+      <span class="white-text">
+        <p><em>Flight from</em> : <%= @flight.from.code %></p>
+        <p><em>Flight to</em> : <%= @flight.to.code %></p>
+        <p><em>Number of Passengers</em> : <%= @passenger_num %></p>
+        <p><em>Duration</em> : <%= Time.at(@flight.duration).strftime("%H:%M:%S") %></p>
+      </span>
+    </div>
+  </div>
+</div>

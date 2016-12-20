@@ -1,7 +1,7 @@
 <div class="row">
   <h1 class="light center">Search for Flights</h1>
 
-  <%= form_tag('/flights', method: 'get', class: 'col s12') do %> 
+  <%= form_tag('/flights', method: :get, class: 'col s12') do %> 
     <div class="row">
       <div class="col s12">
         <%= label_tag "From:" %>
@@ -21,50 +21,15 @@
       </div>
       <div class="col s6">
         <%= label_tag "Date:" %>
-        <%= select_tag "date", options_for_select(@available_dates), class: "browser-default" %>  
+        <%= select_tag "date", options_for_select(@dates), class: "browser-default" %>  
       </div>
-    </div>
-    <div class="btn waves-effect waves-light blue center">
-      <%= submit_tag "Search" %>
-      <i class="material-icons right">send</i>
-    </div>
+      <div class="col s12">
+        <%= submit_tag "Search", class: "btn waves-effect waves-light blue" %>
+      </div>
   <% end %>
 </div>
 
 <% if @flights.any? %>
-<div class="row">
-  <h1 class="light center">Available Flights</h1>
-  <table class="highlight white z-depth-5">
-    <thead>
-      <tr>
-        <th data-field="id">Select</th>
-        <th data-field="from">From</th>
-        <th data-field="to">To</th>
-        <th data-field="date">Date</th>
-        <th data-field="duration">Duration</th>
-      </tr>
-    </thead>
-  <%= form_tag('/booking', method: 'get', class: 'col s12') do%>
-    <% @flights.each do |flight| %>
-    <div class="row">   
-    <tbody>
-      <tr>
-        <td><%= radio_button_tag(:flight, flight.id, class: 'with-gap') %>
-          <label for="flight_<%= flight.id %>"></label></td>
-        <td><%= flight.from.code %></td>
-        <td><%= flight.to.code %></td>
-        <td><%= flight.date %></td>
-        <td><%= Time.at(flight.duration).strftime("%H:%M:%S") %></td>
-      </tr>
-    </tbody>
-    </div>
-    <% end %>
-      <%= hidden_field_tag :num, params[:num] %>
-      <div class="row center">
-      <%= submit_tag "Book Flight", class: 'btn waves-effect waves-light blue center'  %>
-    </div>
-  <% end %>
-  </table>
-</div>
+  <%= render 'flight_selection' %>
 <% end %>
 </div>

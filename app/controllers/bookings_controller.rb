@@ -1,29 +1,53 @@
+# Bookings
 class BookingsController < ApplicationController
-
   def index
-    @bookings = Booking.all
+    find_bookings
   end
+
   def new
-    unless params[:flight].nil?
-      @flight = Flight.find(params[:flight])
+    if params[:flight]
+      find_flight
       @passenger_num = params[:num].to_i
     else
-      render 'flights/index'
+      redirect_to root_url
     end
   end
 
   def create
-    flight = Flight.find(params[:flight])
-    params[:passengers].each do |passenger|
-      passenger = Passenger.create(name: passenger[:name], email: passenger[:email])
-      @booking = Booking.create(flight: flight, passenger: passenger)
-      
-      render 'new' unless passenger.valid?
-    end
-    flash[:success] = "Flight was successfully booked!"
+    find_flight
+    iterate_passanger
+    flash[:success] = 'Flight was successfully booked!'
     redirect_to root_url
   end
 
   private
 
+  def find_bookings
+    @bookings ||= scope_booking
+  end
+
+  def find_flight
+    @flight ||= Flight.find(params[:flight])
+  end
+
+  def scope_booking
+    Booking.all
+  end
+
+  def iterate_passanger
+    params[:passengers].each do |passenger|
+      create_passanger(passenger)
+      build_booking
+      render :new unless @booking.save
+    end
+  end
+
+  def create_passanger(passenger)
+    @passenger = Passenger.create(name: passenger[:name],
+                                  email: passenger[:email])
+  end
+
+  def build_booking
+    @booking = Booking.new(flight: @flight, passenger: @passenger)
+  end
 end
